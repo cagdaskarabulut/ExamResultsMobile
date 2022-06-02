@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "269644995204",
+    "project_id": "fenbilimleri-90dbb",
+    "storage_bucket": "fenbilimleri-90dbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269644995204:android:55c430b60f09b574ea40d1",
+        "android_client_info": {
+          "package_name": "com.fenbilimleri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269644995204-7unr97hc8ct4edo25h30juni1cuhstg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3WI8aZHHtigOJ_4p3FX1KliToSHwnF_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269644995204-7unr97hc8ct4edo25h30juni1cuhstg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
