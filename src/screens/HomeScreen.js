@@ -133,7 +133,6 @@ export default class HomeScreen extends Component {
     }
 } */
 
-
 import React from 'react'
 import { View, Text } from 'react-native'
 import UpdateScreen from './UpdateScreen'
