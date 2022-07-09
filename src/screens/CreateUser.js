@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import auth from '@react-native-firebase/auth';
-// import {useNavigation} from '@react-navigation/native';
 
-export default function Authentication() {
+export default function CreateUser() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-  //const navigation = useNavigation();
-
-  const createUser = async (email, password) => {
+  const create = async (email, password) => {
     try {
       auth().createUserWithEmailAndPassword(email, password);
     } catch (error) {
@@ -20,12 +17,10 @@ export default function Authentication() {
   const signin = async (email, password) => {
     try {
       auth().signInWithEmailAndPassword(email, password);
-      //navigation.navigate('HomeScreen');
     } catch (error) {
       alert(error);
     }
   };
-
 
   return (
     <View style={styles.screen}>
@@ -42,12 +37,12 @@ export default function Authentication() {
         style={styles.input}
         value={password}
         onChangeText={setPassword}
-        placeholder="Password"
+        placeholder="Şifre"
         secureTextEntry={true}
       />
       <View style={styles.buttons}>
         <Button title="signin" onPress={() => { signin(email, password) }}  />
-        <Button title="Create" onPress={() => { createUser(email, password) }}
+        <Button title="Create" onPress={() => { create(email, password) }}
          />
       </View>
     </View>

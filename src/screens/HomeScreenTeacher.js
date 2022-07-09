@@ -2,9 +2,10 @@ import React, { useState, useEffect} from 'react'
 import firestore from '@react-native-firebase/firestore'
 import { Card, Header } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { View, ScrollView } from 'react-native'
+import { Button, View, ScrollView } from 'react-native'
+import auth from '@react-native-firebase/auth'
 
-const Feed = ({navigation}) => {
+const HomeScreenTeacher = ({navigation}) => {
     const [students, setStudents] = useState([])
 
     const fetchStudents = async () => {
@@ -17,6 +18,12 @@ const Feed = ({navigation}) => {
         )
     }
 
+    const signOut = async function () {
+        return await auth().signOut()
+          .then(async () => {
+          });
+      };
+
     const deleteStudent = async (id) => {
         const res = await firestore().collection('students').doc(id).delete()
         console.log(res)
@@ -24,7 +31,9 @@ const Feed = ({navigation}) => {
     }
 
     useEffect(() => {
-        firestore().collection('students').where("type", "==", "student").onSnapshot(querySnapshot => {
+        firestore().collection('students').where("type", "==", "student").onSnapshot({
+            error: (e) => console.error(e),
+            next: (querySnapshot) => {
             querySnapshot.docChanges().forEach(change => {
                 if(change.type == 'added') {
                     console.log('New student:', change.doc.data())
@@ -37,15 +46,17 @@ const Feed = ({navigation}) => {
                 }
                 fetchStudents()
             })
-        })
+        }})
     }, [])
     return (
         <View>
             <Header 
-            placement='left'
-            centerComponent={{text: 'STUDENTS', style:{color: '#fff', marginTop: 2}}}
-            leftComponent={{icon: 'people', color: '#fff'}}
-            />
+            placement='center'
+            centerComponent={{text: 'ÖĞRENCİLER', style:{color: '#fff', marginTop: 2}}}
+            //leftComponent={{icon: 'iconImage', color: '#fff'}}
+            //leftComponent={<Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg' }} />}
+            rightComponent={<Button  title="Çıkış" onPress={() => signOut()} />}>
+            </Header>
             <ScrollView>
                 {
                     students.map(student => {
@@ -74,7 +85,7 @@ const Feed = ({navigation}) => {
                                     />
                                 </View>
                             </Card>
-                        )
+                            )
                     })
                 }
             </ScrollView>
@@ -82,4 +93,4 @@ const Feed = ({navigation}) => {
     )
 }
 
-export default Feed
+export default HomeScreenTeacher
