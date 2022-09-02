@@ -1,14 +1,14 @@
-import React, { useState, useEffect}  from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import React, { useState, useEffect}  from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import CreateScreen from './src/screens/CreateScreen'
-import Login from './src/screens/Login'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import CreateScreen from './src/screens/dummy/CreateScreen';
+import Login from './src/screens/Login';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import auth from '@react-native-firebase/auth';
 import HomeScreenTeacher from './src/screens/HomeScreenTeacher';
 import HomeScreenStudent from './src/screens/HomeScreenStudent';
-import { Button, View, ScrollView, Text} from 'react-native'
+import { Button, View, ScrollView, Text} from 'react-native';
 import UpdateScreen from './src/screens/dummy/UpdateScreen';
 import HomeScreen from './src/screens/dummy/HomeScreen';
 
@@ -16,7 +16,7 @@ const App = () => {
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator()
   const [authenticated, setAuthenticated] = useState(false);
-   const [isTeacher, setIsTeacher] = useState(true);
+  const [isTeacher, setIsTeacher] = useState(true);
   const [isAdmin, setIsAdmin] = useState(true);
 
 
